@@ -5,11 +5,13 @@ const getClientes = async (req, res) => {
 
     //faltaba un await
     const { data, error } = await supabase.from('clientes').select('*')
-    if (error) return res.status(500).json({ error: error.message })
+     if (error) return res.status(500).json({ error: error.message })
+
+
     console.log('Clientes obtenidos:', data)
     res.json(data)
   } catch (err) {
-    console.log('Error en getClientes:', err.message)
+    console.log('Error adsd en getClientes:', err.message)
     res.status(500).json({ error: 'Error del servidor' })
   }
 }
@@ -53,5 +55,8 @@ const deleteCliente = async (req, res) => {
     res.status(500).json({ error: 'Error del servidor' })
   }
 }
+
+
+
 
 module.exports = { getClientes, createCliente, updateCliente, deleteCliente }
